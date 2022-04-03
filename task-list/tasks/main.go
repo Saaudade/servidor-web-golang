@@ -8,20 +8,20 @@ type task struct {
 	completed   bool
 }
 
-func (t task) taskCompleted() {
+func (t *task) taskCompleted() {
 	t.completed = true
 }
 
-func (t task) setDescription(description string) {
+func (t *task) setDescription(description string) {
 	t.description = description
 }
 
-func (t task) setName(name string) {
+func (t *task) setName(name string) {
 	t.name = name
 }
 
 func main() {
-	t := task{
+	t := &task{
 		name:        "Complete the go course",
 		description: "Complete the Platzi go course of in this week",
 	}
