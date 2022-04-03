@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 type task struct {
 	name        string
@@ -131,4 +133,36 @@ func main() {
 	fmt.Println("==========================")
 	list.printTaskCompleted()
 
+	fmt.Println()
+	fmt.Println("==========================")
+	fmt.Println("========== maps ==========")
+	fmt.Println("==========================")
+
+	mapTasks := make(map[string]*taskList)
+	mapTasks["Christian"] = list
+
+	t5 := &task{
+		name:        "Complete the Spring Boot course",
+		description: "Complete the Platzi Spring Boot course of in this week",
+	}
+
+	t6 := &task{
+		name:        "Complete the C# course",
+		description: "Complete the Platzi C# course of in this week",
+	}
+
+	list2 := &taskList{
+		tasks: []*task{
+			t5, t6,
+		},
+	}
+
+	mapTasks["Alberto"] = list2
+
+	fmt.Println("Tareas de Christian")
+	mapTasks["Christian"].printList()
+
+	fmt.Println()
+	fmt.Println("Tareas de Alberto")
+	mapTasks["Alberto"].printList()
 }
