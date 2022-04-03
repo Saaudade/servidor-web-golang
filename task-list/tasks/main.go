@@ -32,6 +32,22 @@ func (t *taskList) deleteOfList(index int) {
 	t.tasks = append(t.tasks[:index], t.tasks[index+1:]...)
 }
 
+func (t *taskList) printList() {
+	for _, task := range t.tasks {
+		fmt.Printf("Name: %s\n", task.name)
+		fmt.Printf("Description: %s\n", task.description)
+	}
+}
+
+func (t *taskList) printTaskCompleted() {
+	for _, task := range t.tasks {
+		if task.completed {
+			fmt.Printf("Name: %s\n", task.name)
+			fmt.Printf("Description: %s\n", task.description)
+		}
+	}
+}
+
 func main() {
 	t1 := &task{
 		name:        "Complete the go course",
@@ -61,14 +77,27 @@ func main() {
 
 	list.addToList(t4)
 
+	fmt.Println("==========================")
+	fmt.Println("========== for ===========")
+	fmt.Println("==========================")
+
 	for i := 0; i < len(list.tasks); i++ {
 		fmt.Printf("Index: %v, Name: %v\n", i, list.tasks[i].name)
 	}
+
+	fmt.Println()
+	fmt.Println("==========================")
+	fmt.Println("======= for range ========")
+	fmt.Println("==========================")
 
 	for index, task := range list.tasks {
 		fmt.Printf("Index: %v, Name: %v\n", index, task.name)
 	}
 
+	fmt.Println()
+	fmt.Println("==========================")
+	fmt.Println("======= use break ========")
+	fmt.Println("==========================")
 	for i := 0; i < 10; i++ {
 		if i == 5 {
 			break
@@ -76,11 +105,30 @@ func main() {
 		fmt.Println(i)
 	}
 
+	fmt.Println()
+	fmt.Println("==========================")
+	fmt.Println("===== use continue =======")
+	fmt.Println("==========================")
+
 	for i := 0; i < 10; i++ {
 		if i == 5 {
 			continue
 		}
 		fmt.Println(i)
 	}
+
+	fmt.Println()
+	fmt.Println("==========================")
+	fmt.Println("======= tasks list =======")
+	fmt.Println("==========================")
+	list.printList()
+
+	fmt.Println()
+	list.tasks[0].taskCompleted()
+	list.tasks[1].taskCompleted()
+	fmt.Println("==========================")
+	fmt.Println("==== tasks completed =====")
+	fmt.Println("==========================")
+	list.printTaskCompleted()
 
 }
