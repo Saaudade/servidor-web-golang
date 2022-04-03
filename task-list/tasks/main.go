@@ -59,10 +59,28 @@ func main() {
 		},
 	}
 
-	fmt.Println(list.tasks[1])
 	list.addToList(t4)
-	fmt.Println(len(list.tasks))
-	list.deleteOfList(1)
-	fmt.Println(list.tasks[1])
-	fmt.Println(len(list.tasks))
+
+	for i := 0; i < len(list.tasks); i++ {
+		fmt.Printf("Index: %v, Name: %v\n", i, list.tasks[i].name)
+	}
+
+	for index, task := range list.tasks {
+		fmt.Printf("Index: %v, Name: %v\n", index, task.name)
+	}
+
+	for i := 0; i < 10; i++ {
+		if i == 5 {
+			break
+		}
+		fmt.Println(i)
+	}
+
+	for i := 0; i < 10; i++ {
+		if i == 5 {
+			continue
+		}
+		fmt.Println(i)
+	}
+
 }
