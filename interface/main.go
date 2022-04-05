@@ -2,41 +2,39 @@ package main
 
 import "fmt"
 
+type animal interface {
+	move() string
+}
+
 type dog struct{}
 
 type fish struct{}
 
 type bird struct{}
 
-func (dog) walk() string {
+func (dog) move() string {
 	return "I'm a dog and I walk"
 }
 
-func (fish) swim() string {
+func (fish) move() string {
 	return "I'm a fish and I swimming"
 }
 
-func (bird) fly() string {
+func (bird) move() string {
 	return "I'm a bird and I flying"
 }
 
-func dogMove(d dog) {
-	fmt.Println(d.walk())
-}
-
-func fishMove(f fish) {
-	fmt.Println(f.swim())
-}
-
-func birdMove(b bird) {
-	fmt.Println(b.fly())
+func moveAnimal(a animal) {
+	fmt.Println(a.move())
 }
 
 func main() {
 	d := dog{}
-	dogMove(d)
+	moveAnimal(d)
+
 	f := fish{}
-	fishMove(f)
+	moveAnimal(f)
+
 	b := bird{}
-	birdMove(b)
+	moveAnimal(b)
 }
